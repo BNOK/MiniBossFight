@@ -16,9 +16,11 @@ public class BossStateController : MonoBehaviour
 
     public StateBase currentState;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void SetupBoss(PlayerController[] playerArray)
     {
-        playerReferences = GameObject.FindObjectsByType<PlayerController>(FindObjectsSortMode.InstanceID);
+        //playerReferences = GameObject.FindObjectsByType<PlayerController>(FindObjectsSortMode.InstanceID);
+        playerReferences = playerArray;
+
 
         moveState.Setup(GetComponent<Rigidbody>(), playerReferences);
         flameAttackState.Setup(GetComponent<Rigidbody>(), playerReferences);

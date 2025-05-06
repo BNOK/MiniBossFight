@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 
     public Transform[] spawnPositions;
     public PlayerController[] playerReferences;
+    public BossStateController BossReference;
+
 
     public string[] hAxisNames;
     public string[] vAxisNames;
@@ -15,6 +17,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         SpawnPlayers();
+
+        BossReference = GameObject.FindFirstObjectByType<BossStateController>();
+        BossReference.SetupBoss(playerReferences);
     }
 
     // Update is called once per frame
@@ -39,5 +44,6 @@ public class GameManager : MonoBehaviour
 
             tempplayer.SetActive(true);
         }
+        playerReferences = list.ToArray();
     }
 }
